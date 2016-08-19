@@ -1,14 +1,15 @@
 {% extends 'financeiro/base.html' %}
 
 {% block content %}
-     {% for post in posts %}
-        <div class="post">
+	<div class="post">
         <h3><a href="{% url 'financeiro.views.post_detail' pk=post.pk %}">{{ post.descricao }}</a></h3>
-        <div class="date">
-            <p>Data: {{ post.data }}</p>
-        </div>
+    <div class="post">
+        {% if post.data %}
+            <div class="date">
+                Data: {{ post.data }}
+            </div>
+        {% endif %}
         <p>Tipo: {{ post.tipo_transacao}}
         <p>Valor: <b>R${{ post.valor|linebreaksbr }}</p></b>
-        </div>
-    {% endfor %}
-{% endblock content %}
+    </div>
+{% endblock %}
