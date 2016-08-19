@@ -1,18 +1,14 @@
-<html>
-    <head>
-        <title>O financeiro do seu dia</title>
-    </head>
-    <body>
-        <div>
-        <h1><a href="/">Django Girls Blog</a></h1>
+{% extends 'financeiro/base.html' %}
+
+{% block content %}
+     {% for post in posts %}
+        <div class="post">
+        <h3><a href="">{{ post.descricao }}</a></h3>
+        <div class="date">
+            <p>Data: {{ post.data }}</p>
         </div>
-            {% for post in posts %}
-                <div>
-                <h3><a href="">{{ post.descricao }}</a></h3>
-                <p>Data: {{ post.data }}</p>
-                <p>Tipo: {{ post.tipo_transacao}}
-                <p>Valor: <b>{{ post.valor|linebreaksbr }}</p></b>
-                </div>
-            {% endfor %}
-    </body>
-</html>
+        <p>Tipo: {{ post.tipo_transacao}}
+        <p>Valor: <b>R${{ post.valor|linebreaksbr }}</p></b>
+        </div>
+    {% endfor %}
+{% endblock content %}
